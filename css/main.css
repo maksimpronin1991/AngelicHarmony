@@ -1,0 +1,26 @@
+@import "./reset.css";
+@import "./header.css";
+@import "./top-section.css";
+@import "./philosophy.css";
+@import "./history.css";
+@import "./procedure.css";
+@import "./experience.css";
+@import "./why-us.css";
+
+
+body{
+    font-family: "Cormorant Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    background-color: Black;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px; 
+    margin: 0 auto;    
+    box-sizing: border-box;
+}
+

@@ -1,0 +1,46 @@
+.experience-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 30vh;
+    max-height: 90vh;
+}
+
+.experience-image, .experience-text{
+    flex: 1;
+    position: relative;
+}
+
+.experience-text {
+    background: #FFF3E4;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.experience-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.experience-content h2 {
+    font-size: 45px;
+    margin-bottom: 30px;
+    color: #181823;
+    font-weight: 600;
+}
+
+.experience-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.experience-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
