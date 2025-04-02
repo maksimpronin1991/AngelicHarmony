@@ -3,6 +3,7 @@
     color: #fff;
     padding: 60px 0;
     font-family: 'Arial', sans-serif;
+    overflow: hidden;
 }
 
 .section-title {
@@ -12,6 +13,9 @@
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .features-list {
@@ -19,16 +23,23 @@
     flex-direction: column;
     justify-content: center;
     gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .feature-item {
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: transform, opacity;
 }
+
+.feature-item:nth-child(1) { transition-delay: 0.1s; margin-left: 0; }
+.feature-item:nth-child(2) { transition-delay: 0.2s; margin-left: 40px; }
+.feature-item:nth-child(3) { transition-delay: 0.3s; margin-left: 80px; }
+.feature-item:nth-child(4) { transition-delay: 0.4s; margin-left: 120px; }
 
 .feature-item:last-child {
     border-bottom: none;
@@ -62,6 +73,12 @@
 .highlight .feature-text {
     font-size: 18px;
     color: #fff;
+}
+
+/* Анимационные классы */
+.animate-in {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
 .heart {
