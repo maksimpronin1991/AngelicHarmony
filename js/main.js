@@ -174,3 +174,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализация слайдера
     startSlider();
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Функция для проверки видимости элемента
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75
+        );
+    }
+    
+    // Функция обработки скролла
+    function handleScroll() {
+        const section = document.querySelector('.promo-section');
+        if (isElementInViewport(section)) {
+            section.classList.add('animated');
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }
+    
+    // Проверяем при загрузке, может быть секция уже в viewport
+    handleScroll();
+    
+    // Добавляем обработчик скролла
+    window.addEventListener('scroll', handleScroll);
+});
