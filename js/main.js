@@ -200,3 +200,80 @@ document.addEventListener('DOMContentLoaded', function() {
     // Добавляем обработчик скролла
     window.addEventListener('scroll', handleScroll);
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const cardWidth = cards[0].offsetWidth + 20; // width + gap
+    let currentPosition = 0;
+    let maxPosition = -((cards.length / 4 - 1) * cardWidth * 4);
+
+    // Клонируем первые карточки для бесконечной прокрутки
+    const cloneCards = Array.from(cards).slice(0, 4);
+    cloneCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        track.appendChild(clone);
+    });
+
+    // Перемотка вперед
+    nextBtn.addEventListener('click', () => {
+        currentPosition -= cardWidth;
+        if (currentPosition < maxPosition) {
+            currentPosition = 0;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${currentPosition}px)`;
+            setTimeout(() => {
+                track.style.transition = 'transform 0.5s ease';
+                currentPosition = -cardWidth;
+                track.style.transform = `translateX(${currentPosition}px)`;
+            }, 10);
+        } else {
+            track.style.transform = `translateX(${currentPosition}px)`;
+        }
+    });
+
+    // Перемотка назад
+    prevBtn.addEventListener('click', () => {
+        currentPosition += cardWidth;
+        if (currentPosition > 0) {
+            currentPosition = maxPosition;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${currentPosition}px)`;
+            setTimeout(() => {
+                track.style.transition = 'transform 0.5s ease';
+                currentPosition = maxPosition + cardWidth;
+                track.style.transform = `translateX(${currentPosition}px)`;
+            }, 10);
+        } else {
+            track.style.transform = `translateX(${currentPosition}px)`;
+        }
+    });
+
+    // Автопрокрутка
+    let autoScroll = setInterval(() => {
+        nextBtn.click();
+    }, 5000);
+
+    // Пауза при наведении
+    document.querySelector('.testimonials-carousel').addEventListener('mouseenter', () => {
+        clearInterval(autoScroll);
+    });
+
+    document.querySelector('.testimonials-carousel').addEventListener('mouseleave', () => {
+        autoScroll = setInterval(() => {
+            nextBtn.click();
+        }, 5000);
+    });
+
+    // Адаптация при изменении размера окна
+    window.addEventListener('resize', () => {
+        const newCardWidth = document.querySelector('.testimonial-card').offsetWidth + 20;
+        if (newCardWidth !== cardWidth) {
+            cardWidth = newCardWidth;
+            track.style.transform = `translateX(${currentPosition}px)`;
+        }
+    });
+});
