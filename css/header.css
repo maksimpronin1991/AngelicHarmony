@@ -3,16 +3,18 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: transform 0.3s ease-in-out;
     background: linear-gradient(90deg, 
-    #000000 0%, 
-    #000000 35%, 
-    #181823 35%, 
-    #181823 100%);
+        #000000 0%, 
+        #000000 35%, 
+        #181823 35%, 
+        #181823 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-.header.hide {
-    transform: translateY(-100%);
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .header-content {
@@ -20,13 +22,20 @@
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    position: relative;
 }
 
 .header-title {
     font-family: "Dancing Script", cursive;
-    margin: 0;
     font-size: 28px;
     color: white;
+    margin: 0;
+    z-index: 1001;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
 }
 
 .nav-list {
@@ -34,80 +43,187 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 10px;
-    font-size: 20px;
+}
 
+.nav-list_item {
+    position: relative;
 }
 
 .nav-list_item a {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-weight: 500;
-    padding: 30px 24px;
-    transition: all 0.4s ease;
-    overflow: hidden; /* Для glow эффекта */
-}
-
-.nav-list_item:last-child{
-    margin-left: 140px;
-}
-.nav-list_item a{
-    margin-left: -15px;
-}
-
-.nav-list_item a::before {
-    content: '';
-    position: absolute;
-    left: 24px;
-    bottom: 20px;
-    width: calc(100% - 48px);
-    height: 2px;
-    background: linear-gradient(90deg, 
-        #5221E6 0%, 
-        #8A2BE2 50%, 
-        #30677a 100%);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-    z-index: 1;
-    border-radius: 10px;
-}
-
-/* Эффект свечения */
-.nav-list_item a::after {
-    content: '';
-    position: absolute;
-    left: 24px;
-    bottom: 18px; /* Выше основной линии */
-    width: calc(100% - 48px);
-    height: 6px;
-    background: linear-gradient(90deg, 
-        rgba(82, 33, 230, 0.4) 0%, 
-        rgba(138, 43, 226, 0.3) 50%, 
-        rgba(0, 191, 255, 0.2) 100%);
-    filter: blur(4px);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-    opacity: 0;
-    border-radius: 10px;
+    font-size: 18px;
+    padding: 30px 20px;
+    display: block;
+    transition: color 0.3s ease;
+    position: relative;
 }
 
 .nav-list_item a:hover {
     color: #f0f0f0;
 }
 
-.nav-list_item a:hover::before {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+/* Подчеркивание при наведении */
+.nav-list_item a::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 2px;
+    background: linear-gradient(90deg, 
+        #5221E6 0%, 
+        #8A2BE2 50%, 
+        #30677a 100%);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
 }
 
 .nav-list_item a:hover::after {
     transform: scaleX(1);
-    transform-origin: bottom left;
+    transform-origin: left;
+}
+
+/* Телефон */
+.header-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.header-phone a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.header-phone a:hover {
+    color: #8A2BE2;
+}
+
+/* Бургер-меню (скрыто по умолчанию) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+/* Фон для размытия */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.backdrop.active {
     opacity: 1;
-    transition-delay: 0.1s;
+    visibility: visible;
+}
+
+/* Мобильное меню */
+.phone-mobile {
+    display: none;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    background: #000;
+    margin-top: 10px;
+}
+
+/* Адаптация для планшетов и мобильных */
+@media (max-width: 992px) {
+    .header-nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #181823;
+        padding: 20px 0;
+        transform: translateY(-150%);
+        transition: transform 0.4s ease;
+        z-index: 1000;
+        justify-content: center;
+    }
+
+    .header-nav.active {
+        transform: translateY(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-list_item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list_item a {
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+
+    .nav-list_item a::after {
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 80px;
+    }
+
+    .nav-list_item a:hover::after {
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    .header-phone {
+        margin-left: 10px;
+        margin-right: 90px;
+        font-size: 14px;
+
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .phone-mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 24px;
+    }
+
+}
+
+@media (min-width: 993px) {
+    .header-nav {
+        display: flex !important;
+    }
 }
