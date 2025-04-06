@@ -3,6 +3,7 @@
     top: 0;
     width: 100%;
     z-index: 1000;
+    transition: transform 0.3s ease-in-out;
     background: linear-gradient(90deg, 
         #000000 0%, 
         #000000 35%, 
@@ -31,6 +32,10 @@
     color: white;
     margin: 0;
     z-index: 1001;
+}
+
+.header.hide {
+    transform: translateY(-100%);
 }
 
 .header-nav {
@@ -86,7 +91,6 @@
     transform-origin: left;
 }
 
-/* Телефон */
 .header-phone {
     display: flex;
     align-items: center;
@@ -151,7 +155,7 @@
 }
 
 /* Адаптация для планшетов и мобильных */
-@media (max-width: 992px) {
+@media (max-width: 860px) {
     .header-nav {
         position: fixed;
         top: 80px;
