@@ -201,9 +201,8 @@
 
     .header-phone {
         margin-left: 10px;
-        margin-right: 90px;
+        margin-right: 70px;
         font-size: 14px;
-
     }
 
     .menu-toggle {
@@ -214,9 +213,7 @@
         transform: translateY(-50%);
     }
 
-    .phone-mobile {
-        display: block;
-    }
+
 }
 
 @media (max-width: 768px) {
