@@ -305,26 +305,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.header-nav');
-    const backdrop = document.querySelector('.backdrop');
-
-    toggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        nav.classList.toggle('active');
-        backdrop.classList.toggle('active');
-        document.body.style.overflow = backdrop.classList.contains('active') ? 'hidden' : '';
-    });
-
-    // Закрытие меню при клике на пункт или бэкдроп
-    document.querySelectorAll('.nav-list_item a, .backdrop').forEach(item => {
-        item.addEventListener('click', function() {
-            if (window.innerWidth <= 992) {
-                toggle.classList.remove('active');
-                nav.classList.remove('active');
-                backdrop.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
+    // Функция для проверки видимости элемента
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75
+        );
+    }
+    
+    // Функция обработки скролла
+    function handleScroll() {
+        const section = document.querySelector('.why-us-section');
+        if (isElementInViewport(section)) {
+            section.classList.add('animated');
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }
+    
+    // Проверяем при загрузке, может быть секция уже в viewport
+    handleScroll();
+    
+    // Добавляем обработчик скролла
+    window.addEventListener('scroll', handleScroll);
 });

@@ -1,7 +1,7 @@
 .why-us-section {
     background-color: #000;
     color: #fff;
-    padding: 60px 0;
+    padding: 60px 20px; /* Добавили боковые отступы */
     font-family: 'Arial', sans-serif;
     overflow: hidden;
 }
@@ -29,17 +29,27 @@
 
 .feature-item {
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 30px;
+    padding-bottom: 25px;
     opacity: 0;
     transform: translateX(-50px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: transform, opacity;
 }
 
-.feature-item:nth-child(1) { transition-delay: 0.1s; margin-left: -60px; }
-.feature-item:nth-child(2) { transition-delay: 0.2s; margin-left: 20px; }
-.feature-item:nth-child(3) { transition-delay: 0.3s; margin-left: 100px; }
-.feature-item:nth-child(4) { transition-delay: 0.4s; margin-left: 180px; }
+/* Анимация для десктопов */
+@media (min-width: 992px) {
+    .feature-item:nth-child(1) { transition-delay: 0.1s; margin-left: -60px; }
+    .feature-item:nth-child(2) { transition-delay: 0.2s; margin-left: 20px; }
+    .feature-item:nth-child(3) { transition-delay: 0.3s; margin-left: 100px; }
+    .feature-item:nth-child(4) { transition-delay: 0.4s; margin-left: 180px; }
+}
+
+/* Для планшетов и мобильных - убираем смещение */
+@media (max-width: 991px) {
+    .feature-item {
+        margin-left: 0 !important;
+    }
+}
 
 .feature-item:last-child {
     border-bottom: none;
@@ -49,11 +59,6 @@
 .feature-content {
     display: flex;
     flex-direction: column;
-}
-
-.feature-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
 }
 
 .feature-title {
@@ -76,11 +81,74 @@
 }
 
 /* Анимационные классы */
-.animate-in {
-    opacity: 1 !important;
-    transform: translateX(0) !important;
+.why-us-section.animated .section-title,
+.why-us-section.animated .feature-item {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.heart {
-    color: #ff6b9e;
+/* Адаптация для планшетов (768px - 991px) */
+@media (max-width: 991px) {
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .feature-title {
+        font-size: 20px;
+    }
+    
+    .feature-text {
+        font-size: 15px;
+    }
+    
+    .highlight .feature-text {
+        font-size: 16px;
+    }
+}
+
+/* Адаптация для мобильных (576px - 767px) */
+@media (max-width: 767px) {
+    .why-us-section {
+        padding: 40px 15px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+    }
+    
+    .features-list {
+        gap: 25px;
+        padding: 0 10px;
+    }
+    
+    .feature-item {
+        padding-bottom: 20px;
+    }
+    
+    .feature-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Адаптация для маленьких мобильных (до 575px) */
+@media (max-width: 575px) {
+    .section-title {
+        font-size: 18px;
+    }
+    
+    .feature-title {
+        font-size: 14px;
+    }
+    
+    .feature-text {
+        font-size: 12px;
+    }
+    
+    .highlight .feature-text {
+        font-size: 13px;
+    }
 }
