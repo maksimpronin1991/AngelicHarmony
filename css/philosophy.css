@@ -2,12 +2,14 @@
     width: 100%;
     position: relative;
     background: linear-gradient(to bottom right, #ff6600, #ffcc33);
+    min-height: 300px; /* Минимальная высота для мобильных */
 }
 
 .philosophy-image-wrapper {
     position: relative;
     width: 100%;
     overflow: hidden;
+    max-height: 800px; /* Ограничение высоты для больших экранов */
 }
 
 .philosophy-image {
@@ -15,6 +17,8 @@
     height: auto;
     display: block;
     transition: all 0.5s ease;
+    min-height: 300px; /* Минимальная высота изображения */
+    object-fit: cover; /* Обеспечивает правильное заполнение пространства */
 }
 
 .philosophy-text-overlay {
@@ -32,6 +36,7 @@
     transition: opacity 0.5s ease;
     padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto; /* Добавляем скролл если текст не помещается */
 }
 
 .philosophy-text-content {
@@ -39,12 +44,89 @@
     text-align: center;
     font-size: 22px;
     line-height: 1.6;
+    padding: 20px;
 }
 
+/* Анимации для тач-устройств */
+.philosophy-image-wrapper.touch .philosophy-text-overlay,
 .philosophy-image-wrapper:hover .philosophy-text-overlay {
     opacity: 1;
 }
 
+.philosophy-image-wrapper.touch .philosophy-image,
 .philosophy-image-wrapper:hover .philosophy-image {
     transform: scale(1.02);
+}
+
+/* Адаптация для планшетов (768px - 1024px) */
+@media (max-width: 1024px) {
+    .philosophy-text-content {
+        font-size: 20px;
+        padding: 15px;
+        max-width: 700px;
+    }
+}
+
+/* Адаптация для средних планшетов (600px - 767px) */
+@media (max-width: 767px) {
+    .philosophy-text-content {
+        font-size: 18px;
+        line-height: 1.5;
+        padding: 10px;
+    }
+    
+    .philosophy-section {
+        min-height: 250px;
+    }
+    
+    .philosophy-image {
+        min-height: 250px;
+    }
+}
+
+/* Адаптация для мобильных (до 599px) */
+@media (max-width: 599px) {
+    .philosophy-text-content {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+    
+    .philosophy-text-overlay {
+        padding: 5px;
+    }
+    
+    .philosophy-section {
+        min-height: 200px;
+    }
+    
+    .philosophy-image {
+        min-height: 200px;
+    }
+}
+
+/* Адаптация для маленьких мобильных (до 399px) */
+@media (max-width: 399px) {
+    .philosophy-text-content {
+        font-size: 12px;
+    }
+    
+    .philosophy-text-overlay {
+        padding: 5px;
+    }
+}
+
+/* Обнаружение тач-устройств */
+@media (hover: none) {
+    .philosophy-image-wrapper {
+        touch-action: manipulation;
+    }
+    
+    .philosophy-text-overlay {
+        opacity: 1; /* Всегда показываем текст на тач-устройствах */
+        background: rgba(0, 0, 0, 0.6); /* Делаем немного прозрачнее для лучшей читаемости */
+    }
+    
+    .philosophy-image {
+        transform: scale(1.02); /* Небольшой зум для тач-устройств */
+    }
 }

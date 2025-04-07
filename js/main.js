@@ -328,3 +328,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Добавляем обработчик скролла
     window.addEventListener('scroll', handleScroll);
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints;
+    if (isTouchDevice) {
+        document.querySelector('.philosophy-image-wrapper').classList.add('touch');
+    }
+});
