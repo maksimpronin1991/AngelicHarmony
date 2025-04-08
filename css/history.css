@@ -130,7 +130,7 @@
     }
     
     .text-content {
-        padding: 20px;
+        padding: 10px;
     }
     
     .text-content h2 {
@@ -140,7 +140,7 @@
     
     .text-content p {
         font-size: 14px;
-        line-height: 1.6;
+        line-height: 1.3;
     }
 }
 
