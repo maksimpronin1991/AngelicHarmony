@@ -9,7 +9,7 @@
     text-align: center;
     font-size: 42px;
     color: #d4a373;
-    margin-bottom:30px;
+    margin-bottom: 30px;
     font-weight: 600;
     position: relative;
     opacity: 0;
@@ -32,12 +32,13 @@
     gap: 20px;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 .promo-card {
     background: white;
     border-radius: 12px;
-    padding: 25px;
+    padding: 20px;
     display: flex;
     align-items: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -57,7 +58,7 @@
     transform: translateX(-10%);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     align-self: flex-start;
-    margin-left: -30px;
+    margin-left: 0;
 }
 
 .card-center {
@@ -67,26 +68,26 @@
 }
 
 .card-right {
-    transform: translateX(60%);
+    transform: translateX(10%);
     transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
     align-self: flex-end;
-    margin-right: -180px;
+    margin-right: 0;
 }
 
 /* Стили для бейджей и контента */
 .promo-badge {
     background: #d4a373;
     color: white;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     flex-shrink: 0;
-    margin-right: 25px;
+    margin-right: 20px;
     box-shadow: 0 4px 8px rgba(212, 163, 115, 0.3);
 }
 
@@ -95,16 +96,16 @@
 }
 
 .promo-title {
-    font-size: 22px;
+    font-size: 18px;
     color: #2a2a2a;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: 600;
 }
 
 .promo-desc {
-    font-size: 16px;
+    font-size: 14px;
     color: #666;
-    line-height: 1.6;
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -124,4 +125,104 @@
 .promo-section.animated .promo-card {
     opacity: 1;
     transform: translate(0, 0);
+}
+
+/* Адаптация для планшетов */
+@media (min-width: 768px) {
+    .promo-card {
+        padding: 25px;
+    }
+    
+    .promo-badge {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+        margin-right: 25px;
+    }
+    
+    .promo-title {
+        font-size: 22px;
+    }
+    
+    .promo-desc {
+        font-size: 16px;
+    }
+    
+    .card-left {
+        margin-left: -30px;
+    }
+    
+    .card-right {
+        margin-right: -30px;
+    }
+}
+
+/* Адаптация для десктопов */
+@media (min-width: 992px) {
+    .promo-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .promo-card {
+        flex: 1 1 calc(33.333% - 40px);
+        min-width: 250px;
+        max-width: 350px;
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    
+    .promo-badge {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .card-left,
+    .card-center,
+    .card-right {
+        align-self: stretch;
+        margin: 0;
+    }
+}
+
+/* Адаптация для очень больших экранов */
+@media (min-width: 1200px) {
+    .promo-cards {
+        max-width: 1200px;
+    }
+    
+    .promo-card {
+        padding: 35px 25px;
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+    .promo-section {
+        padding: 40px 0;
+    }
+    
+    .promo-section-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    
+    .promo-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+    }
+    
+    .promo-badge {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .card-left,
+    .card-center,
+    .card-right {
+        align-self: center;
+    }
 }

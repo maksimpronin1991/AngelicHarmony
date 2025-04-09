@@ -177,32 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Функция для проверки видимости элемента
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75
-        );
-    }
-    
-    // Функция обработки скролла
-    function handleScroll() {
-        const section = document.querySelector('.promo-section');
-        if (isElementInViewport(section)) {
-            section.classList.add('animated');
-            window.removeEventListener('scroll', handleScroll);
-        }
-    }
-    
-    // Проверяем при загрузке, может быть секция уже в viewport
-    handleScroll();
-    
-    // Добавляем обработчик скролла
-    window.addEventListener('scroll', handleScroll);
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
     const track = document.querySelector('.carousel-track');
     const cards = document.querySelectorAll('.testimonial-card');
     const prevBtn = document.querySelector('.prev-btn');
@@ -335,4 +309,29 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isTouchDevice) {
         document.querySelector('.philosophy-image-wrapper').classList.add('touch');
     }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const promoSection = document.querySelector('.promo-section');
+    
+    function checkVisibility() {
+        const rect = promoSection.getBoundingClientRect();
+        const isVisible = (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+        );
+        
+        if (isVisible) {
+            promoSection.classList.add('animated');
+            window.removeEventListener('scroll', checkVisibility);
+        }
+    }
+    
+    // Проверяем сразу при загрузке
+    checkVisibility();
+    
+    // И при скролле
+    window.addEventListener('scroll', checkVisibility);
 });
