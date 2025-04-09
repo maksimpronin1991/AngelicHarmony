@@ -28,7 +28,7 @@
 
 .header-title {
     font-family: "Dancing Script", cursive;
-    font-size: 28px;
+    font-size: 27px;
     color: white;
     margin: 0;
     z-index: 1001;
@@ -58,8 +58,8 @@
     color: white;
     text-decoration: none;
     font-weight: 500;
-    font-size: 18px;
-    padding: 30px 20px;
+    font-size: 14px;
+    padding: 25px 11px;
     display: block;
     transition: color 0.3s ease;
     position: relative;

@@ -1,17 +1,11 @@
 .procedures-section {
-    padding: 40px 0;
+    padding: 15px 0;
     background: black;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
 
 .procedures-list {
-    padding: 0 0 30px;
+    padding: 0 0 20px;
     text-align: center;
 }
 
@@ -109,7 +103,7 @@
 /* Адаптация для планшетов (768px - 1024px) */
 @media (min-width: 768px) {
     .procedures-section {
-        padding: 50px 0;
+        padding: 20px 0;
     }
     
     .procedures-list h2 {
@@ -147,7 +141,7 @@
 /* Адаптация для десктопов (1025px и больше) */
 @media (min-width: 1025px) {
     .procedures-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .procedures-list h2 {

@@ -9,7 +9,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    max-height: 800px; /* Ограничение высоты для больших экранов */
+    max-height: 600px; /* Ограничение высоты для больших экранов */
 }
 
 .philosophy-image {
