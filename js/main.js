@@ -335,3 +335,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // И при скролле
     window.addEventListener('scroll', checkVisibility);
 });
+
+
+
+// Бургер меню 
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.header-nav');
+    const backdrop = document.querySelector('.backdrop');
+
+    toggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        backdrop.classList.toggle('active');
+        document.body.style.overflow = backdrop.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Закрытие меню при клике на пункт или бэкдроп
+    document.querySelectorAll('.nav-list_item a, .backdrop').forEach(item => {
+        item.addEventListener('click', function() {
+            if (window.innerWidth <= 992) {
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
+                backdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+});
