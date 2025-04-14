@@ -1,9 +1,37 @@
 .why-us-section {
-    background-color: #000;
+    background: #000 url('../img/why-us.jpg') no-repeat center center;
+    background-size: cover;
     color: #fff;
-    padding: 60px 20px; /* Добавили боковые отступы */
+    padding: 60px 20px;
     font-family: 'Arial', sans-serif;
     overflow: hidden;
+    position: relative;
+}
+
+/* Затемнение по краям */
+.why-us-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.9) 0%,
+        rgba(0,0,0,0.5) 20%,
+        rgba(0,0,0,0.5) 80%,
+        rgba(0,0,0,0.9) 100%
+    );
+    z-index: 0;
+}
+
+/* Остальные стили остаются без изменений, но добавляем z-index для контента */
+.section-title,
+.features-list,
+.feature-item {
+    position: relative;
+    z-index: 1;
 }
 
 .section-title {
