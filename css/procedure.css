@@ -29,6 +29,20 @@
     margin-top: 50px;
 }
 
+.contact a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.contact a:hover {
+    font-weight: 700; /* Более сильное утолщение */
+    transform: scale(1.4);
+    text-shadow: 0 0 2px rgba(0,0,0,0.2); /* Добавляет глубину */
+    font-weight: bold;
+    transform: scale(1.06);
+    color: black; /* Изменение цвета при наведении */
+}
+
 .procedure-btn {
     padding: 10px 20px;
     background: #FFF3E4;
@@ -72,15 +86,24 @@
 
 .card-image {
     flex: none;
-    height: 250px;
+    height: 260px;
 }
 
-.card-image img {
+.card-image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     max-height: 350px;
 }
+
+.card-image video{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 350px;
+}
+
 
 .card-content {
     flex: 1;
