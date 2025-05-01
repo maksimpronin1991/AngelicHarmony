@@ -81,7 +81,7 @@
     text-align: center;
 }
 
-.testimonial-card:hover .testimonial-overlay {
+.testimonial-card .testimonial-overlay {
     transform: translateY(0);
 }
 
